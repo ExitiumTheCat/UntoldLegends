@@ -1,3 +1,0 @@
-C:\Users\Luan Paul\Documents\My Games\Terraria\ModLoader\Mod Sources\UntoldLegends\obj\Debug\net45\UntoldLegends.csprojAssemblyReference.cache
-C:\Users\Luan Paul\Documents\My Games\Terraria\ModLoader\Mod Sources\UntoldLegends\obj\Debug\net45\UntoldLegends.AssemblyInfoInputs.cache
-C:\Users\Luan Paul\Documents\My Games\Terraria\ModLoader\Mod Sources\UntoldLegends\obj\Debug\net45\UntoldLegends.AssemblyInfo.cs
