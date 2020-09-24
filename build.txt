@@ -1,5 +1,5 @@
 displayName = Untold Legends, Ranged Skill Tree Update!
-author = ExitiumTheCat and Klink
+author = ExitiumTheCat & Klink
 version = 0.1
 hideCode = true
 hideResources = false

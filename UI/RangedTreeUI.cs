@@ -10,13 +10,17 @@ namespace UntoldLegends.UI
 {
 	internal class RangedSkillTreeUI : UIState
 	{
-		public bool Description;
 		UIPanel panel = new UIPanel();
 		UIText SkillPointsLeftText = new UIText("");
 		UIText LevelText = new UIText("");
 		UIText XPText = new UIText("");
+		UIText DescriptionText = new UIText("");
 		UIImageButton RangersDexterity = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity1"));
 		UIImageButton HunterAcrobatics = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterAcrobatics0"));
+		UIImageButton AerialTakeover = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AerialTakeover0"));
+		UIImageButton HunterInstincts = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterInstincts0"));
+		UIImageButton SharpenedArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows0"));
+		UIImageButton SuperSharpenedArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -27,44 +31,74 @@ namespace UntoldLegends.UI
 			panel.BackgroundColor = new Color(30, 30, 30, 150);
 			Append(panel);
 
-
-			SkillPointsLeftText.HAlign = 0.65f;
+			SkillPointsLeftText.HAlign = 0.33f;
 			SkillPointsLeftText.VAlign = 1f;
 			SkillPointsLeftText.Height.Set(915, 0);
 			SkillPointsLeftText.Width.Set(0, 0);
 			Append(SkillPointsLeftText);
 
-			LevelText.HAlign = 0.5f;
+			LevelText.HAlign = 0.318f;
 			LevelText.VAlign = 1f;
 			LevelText.Height.Set(950, 0);
 			LevelText.Width.Set(0, 0);
 			Append(LevelText);
 
+			XPText.HAlign = 0.33f;
 			XPText.VAlign = 1f;
-			XPText.Height.Set(915, 0);
-			XPText.Width.Set(1050, 0);
+			XPText.Height.Set(885, 0);
+			XPText.Width.Set(0, 0);
 			Append(XPText);
 
+			DescriptionText.HAlign = 0.55f;
+			DescriptionText.VAlign = 1f;
+			DescriptionText.Height.Set(950, 0);
+			DescriptionText.Width.Set(0, 0);
+			Append(DescriptionText);
 
-			RangersDexterity.Width.Set(40, 0);
-			RangersDexterity.Height.Set(40, 0);
+
+
+			RangersDexterity.Width.Set(64, 0);
+			RangersDexterity.Height.Set(64, 0);
 			RangersDexterity.HAlign = 0.5f;
-			RangersDexterity.VAlign = 0.4f;
-			RangersDexterity.OnMouseOut += MouseOut;
+			RangersDexterity.VAlign = 0.5f;
 			RangersDexterity.OnClick += new MouseEvent(OnRangersDexterity);
 			panel.Append(RangersDexterity);
 
-			HunterAcrobatics.Width.Set(40, 0);
-			HunterAcrobatics.Height.Set(40, 0);
-			HunterAcrobatics.HAlign = 0.7f;
-			HunterAcrobatics.VAlign = 0.4f;
-			HunterAcrobatics.OnMouseOut += MouseOut;
+			HunterAcrobatics.Width.Set(64, 0);
+			HunterAcrobatics.Height.Set(64, 0);
+			HunterAcrobatics.HAlign = 0.68f;
+			HunterAcrobatics.VAlign = 0.5f;
 			HunterAcrobatics.OnClick += new MouseEvent(OnHunterAcrobatics);
 			panel.Append(HunterAcrobatics);
-		}
-		private void MouseOut(UIMouseEvent evt, UIElement listeningElement)
-		{
-				Description = false;
+
+			AerialTakeover.Width.Set(64, 0);
+			AerialTakeover.Height.Set(64, 0);
+			AerialTakeover.HAlign = 0.68f;
+			AerialTakeover.VAlign = 0.61f;
+			AerialTakeover.OnClick += new MouseEvent(OnAerialTakeover);
+			panel.Append(AerialTakeover);
+
+			HunterInstincts.Width.Set(64, 0);
+			HunterInstincts.Height.Set(64, 0);
+			HunterInstincts.HAlign = 0.83f;
+			HunterInstincts.VAlign = 0.49f;
+			HunterInstincts.OnClick += new MouseEvent(OnHunterInstincts);
+			panel.Append(HunterInstincts);
+
+			SharpenedArrows.Width.Set(64, 0);
+			SharpenedArrows.Height.Set(64, 0);
+			SharpenedArrows.HAlign = 0.5f;
+			SharpenedArrows.VAlign = 0.38f;
+			SharpenedArrows.OnClick += new MouseEvent(OnSharpenedArrows);
+			panel.Append(SharpenedArrows);
+
+			SuperSharpenedArrows.Width.Set(64, 0);
+			SuperSharpenedArrows.Height.Set(64, 0);
+			SuperSharpenedArrows.HAlign = 0.5f;
+			SuperSharpenedArrows.VAlign = 0.28f;
+			SuperSharpenedArrows.OnClick += new MouseEvent(OnSuperSharpenedArrows);
+			panel.Append(SuperSharpenedArrows);
+
 		}
 		public override void Update(GameTime gameTime)
 		{
@@ -85,28 +119,54 @@ namespace UntoldLegends.UI
 			{
 				Main.LocalPlayer.mouseInterface = true;
 			}
-			if (Description == false)
-			{
 				if (RangersDexterity.IsMouseHovering)
 				{
-					Main.NewTextMultiline("[c/ffec00:Ranger's Dexterity]\nMultiplies your movement speed by 20% while holding a Ranged Weapon\n");
-					Description = true;
+					DescriptionText.SetText("[c/ffec00:Ranger's Dexterity]\nMultiplies your movement speed by 20%\nwhile holding a Ranged Weapon");
 				}
 				if (HunterAcrobatics.IsMouseHovering)
 				{
-					Main.NewTextMultiline("[c/ffec00:Hunter Acrobatics]\nIncreased jump height while holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]\n");
-					Description = true;
+					DescriptionText.SetText("[c/ffec00:Hunter Acrobatics]\nIncreased jump height while holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]");
 				}
-			}
+				if (AerialTakeover.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Aerial Takeover]\nBows deal 5% more damage when you have\nvertical velocity\nEnemies with vertical velocity take extra damage\n[c/b40000:Requires: Hunter Acrobatics]");
+				}
+				if (HunterInstincts.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Hunter Instincts]\nWhile holding a bow, you can clearly see\nall traps around you\n[c/b40000:Requires: Hunter Acrobatics]");
+				}
+				if (SharpenedArrows.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Sharpened Arrows]\nIncreases armor penetration by 5 while\nwhile holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]");
+				}
+				if (SuperSharpenedArrows.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Super Sharpened Arrows]\nWooden Arrows penetrate 1 enemy\n[c/b40000:Requires: Sharpened Arrows]");
+				}
 
-				if (untoldplayer.RangerDexterity == false)
+			if (untoldplayer.RangerDexterity == false)
 				{
 					RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity1"));
-					HunterAcrobatics.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterAcrobatics0"));
 				}
 				else
 				{
 					RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity2"));
+				if (untoldplayer.SharpenedArrows == false)
+				{
+					SharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows1"));
+				}
+				else
+				{
+					SharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows2"));
+					if (untoldplayer.SuperSharpenedArrows == false)
+					{
+						SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows1"));
+					}
+					else
+					{
+						SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows2"));
+					}
+				}
 				if (untoldplayer.HunterAcrobatics == false)
 				{
 					HunterAcrobatics.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterAcrobatics1"));
@@ -114,8 +174,24 @@ namespace UntoldLegends.UI
 				else
 				{
 					HunterAcrobatics.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterAcrobatics2"));
+					if (untoldplayer.AerialTakeover == false)
+					{
+						AerialTakeover.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AerialTakeover1"));
+					}
+					else
+					{
+						AerialTakeover.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AerialTakeover2"));
+					}
+					if (untoldplayer.HunterInstincts == false)
+					{
+						HunterInstincts.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterInstincts1"));
+					}
+					else
+					{
+						HunterInstincts.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterInstincts2"));
+					}
 				}
-				}
+			}
 			}
 		private void OnRangersDexterity(UIMouseEvent evt, UIElement listeningElement)
 		{
@@ -132,6 +208,42 @@ namespace UntoldLegends.UI
 			if (untoldplayer.HunterAcrobatics == false && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity == true)
 			{
 				untoldplayer.HunterAcrobatics = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnAerialTakeover(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (untoldplayer.AerialTakeover == false && untoldplayer.SkillPoints >= 1 && untoldplayer.HunterAcrobatics == true)
+			{
+				untoldplayer.AerialTakeover = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnHunterInstincts(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (untoldplayer.HunterInstincts == false && untoldplayer.SkillPoints >= 1 && untoldplayer.HunterAcrobatics == true)
+			{
+				untoldplayer.HunterInstincts = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnSharpenedArrows(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (untoldplayer.SharpenedArrows == false && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity == true)
+			{
+				untoldplayer.SharpenedArrows = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnSuperSharpenedArrows(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (untoldplayer.SuperSharpenedArrows == false && untoldplayer.SkillPoints >= 1 && untoldplayer.SharpenedArrows == true)
+			{
+				untoldplayer.SuperSharpenedArrows = true;
 				untoldplayer.SkillPoints--;
 			}
 		}
