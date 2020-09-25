@@ -38,7 +38,7 @@ namespace UntoldLegends
         public bool BetterGunpowder = true;
         public bool DimensionalMagazines = true;
         public bool DimensionalBullets = true;
-        public bool LuckyShot = true;
+        public bool LuckyShots = true;
         public bool GoldenFingers = true;
         public bool Speedy = true;
         public bool FasterGelCombustion = true;

@@ -21,6 +21,10 @@ namespace UntoldLegends.UI
 		UIImageButton HunterInstincts = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterInstincts0"));
 		UIImageButton SharpenedArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows0"));
 		UIImageButton SuperSharpenedArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows0"));
+		UIImageButton AchillesHeel = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AchillesHeel0"));
+		UIImageButton PoisonedArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/PoisonedArrows0"));
+		UIImageButton EaglesEyes = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/EaglesEyes0"));
+		UIImageButton MarksmansConcentration = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -55,7 +59,8 @@ namespace UntoldLegends.UI
 			DescriptionText.Width.Set(0, 0);
 			Append(DescriptionText);
 
-
+			//HAlign 18
+			//VAlign 12
 
 			RangersDexterity.Width.Set(64, 0);
 			RangersDexterity.Height.Set(64, 0);
@@ -74,14 +79,14 @@ namespace UntoldLegends.UI
 			AerialTakeover.Width.Set(64, 0);
 			AerialTakeover.Height.Set(64, 0);
 			AerialTakeover.HAlign = 0.68f;
-			AerialTakeover.VAlign = 0.61f;
+			AerialTakeover.VAlign = 0.62f;
 			AerialTakeover.OnClick += new MouseEvent(OnAerialTakeover);
 			panel.Append(AerialTakeover);
 
 			HunterInstincts.Width.Set(64, 0);
 			HunterInstincts.Height.Set(64, 0);
-			HunterInstincts.HAlign = 0.83f;
-			HunterInstincts.VAlign = 0.49f;
+			HunterInstincts.HAlign = 0.86f;
+			HunterInstincts.VAlign = 0.50f;
 			HunterInstincts.OnClick += new MouseEvent(OnHunterInstincts);
 			panel.Append(HunterInstincts);
 
@@ -95,9 +100,37 @@ namespace UntoldLegends.UI
 			SuperSharpenedArrows.Width.Set(64, 0);
 			SuperSharpenedArrows.Height.Set(64, 0);
 			SuperSharpenedArrows.HAlign = 0.5f;
-			SuperSharpenedArrows.VAlign = 0.28f;
+			SuperSharpenedArrows.VAlign = 0.26f;
 			SuperSharpenedArrows.OnClick += new MouseEvent(OnSuperSharpenedArrows);
 			panel.Append(SuperSharpenedArrows);
+
+			AchillesHeel.Width.Set(64, 0);
+			AchillesHeel.Height.Set(64, 0);
+			AchillesHeel.HAlign = 0.32f;
+			AchillesHeel.VAlign = 0.26f;
+			AchillesHeel.OnClick += new MouseEvent(OnAchillesHeel);
+			panel.Append(AchillesHeel);
+
+			PoisonedArrows.Width.Set(64, 0);
+			PoisonedArrows.Height.Set(64, 0);
+			PoisonedArrows.HAlign = 0.68f;
+			PoisonedArrows.VAlign = 0.38f;
+			PoisonedArrows.OnClick += new MouseEvent(OnPoisonedArrows);
+			panel.Append(PoisonedArrows);
+
+			EaglesEyes.Width.Set(64, 0);
+			EaglesEyes.Height.Set(64, 0);
+			EaglesEyes.HAlign = 0.5f;
+			EaglesEyes.VAlign = 0.62f;
+			EaglesEyes.OnClick += new MouseEvent(OnEaglesEyes);
+			panel.Append(EaglesEyes);
+
+			MarksmansConcentration.Width.Set(64, 0);
+			MarksmansConcentration.Height.Set(64, 0);
+			MarksmansConcentration.HAlign = 0.5f;
+			MarksmansConcentration.VAlign = 0.74f;
+			MarksmansConcentration.OnClick += new MouseEvent(OnMarksmansConcentration);
+			panel.Append(MarksmansConcentration);
 
 		}
 		public override void Update(GameTime gameTime)
@@ -113,7 +146,7 @@ namespace UntoldLegends.UI
 				LevelText.SetText("Level: " + untoldplayer.Level);
 			}
 			SkillPointsLeftText.SetText("Skill Points: " + untoldplayer.SkillPoints);
-			XPText.SetText("Experience: " + untoldplayer.Experience);
+			XPText.SetText("XP: " + untoldplayer.Experience + "/" + untoldplayer.XPLimit);
 
 			if (panel.IsMouseHovering)
 			{
@@ -143,6 +176,22 @@ namespace UntoldLegends.UI
 				{
 					DescriptionText.SetText("[c/ffec00:Super Sharpened Arrows]\nWooden Arrows penetrate 1 enemy\n[c/b40000:Requires: Sharpened Arrows]");
 				}
+				if (AchillesHeel.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Achilles' Heel]\nWhen hitting a non-Boss enemy, you have\na 2% chance of instakilling them\n[c/b40000:Requires: SS Arrows & Lucky Shots]");
+				}
+				if (PoisonedArrows.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Poisoned Arrows]\nArrows have a 15% chance of inflicting\nPoisoned\n[c/b40000:Requires: Sharpened Arrows]");
+				}
+				if (EaglesEyes.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Eagle's Eyes]\n3% increased critical chance\n[c/b40000:Requires: Ranger's Dexterity]");
+				}
+				if (MarksmansConcentration.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Marksman's Concentration]\nWhile holding a Bow and not running fast,\nvision decreased but damage increased by 5%\n[c/b40000:Requires: Eagle's Eyes]");
+				}
 
 			if (untoldplayer.RangerDexterity == false)
 				{
@@ -151,6 +200,22 @@ namespace UntoldLegends.UI
 				else
 				{
 					RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity2"));
+				if (untoldplayer.EaglesEyes == false)
+				{
+					EaglesEyes.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/EaglesEyes1"));
+				}
+				else
+				{
+					EaglesEyes.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/EaglesEyes2"));
+					if (untoldplayer.MarksmansConcentration == false)
+					{
+						MarksmansConcentration.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration1"));
+					}
+					else
+					{
+						MarksmansConcentration.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration2"));
+					}
+				}
 				if (untoldplayer.SharpenedArrows == false)
 				{
 					SharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows1"));
@@ -158,9 +223,25 @@ namespace UntoldLegends.UI
 				else
 				{
 					SharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows2"));
+					if (untoldplayer.PoisonedArrows == false)
+					{
+						PoisonedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/PoisonedArrows1"));
+					}
+					else
+					{
+						PoisonedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/PoisonedArrows2"));
+					}
 					if (untoldplayer.SuperSharpenedArrows == false)
 					{
 						SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows1"));
+						if (untoldplayer.AchillesHeel)
+						{
+							AchillesHeel.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AchillesHeel2"));
+						}
+						else if (!untoldplayer.AchillesHeel && untoldplayer.LuckyShots)
+						{
+							AchillesHeel.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AchillesHeel1"));
+						}
 					}
 					else
 					{
@@ -192,11 +273,11 @@ namespace UntoldLegends.UI
 					}
 				}
 			}
-			}
+		}
 		private void OnRangersDexterity(UIMouseEvent evt, UIElement listeningElement)
 		{
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
-			if (untoldplayer.RangerDexterity == false && untoldplayer.SkillPoints >= 1)
+			if (!untoldplayer.RangerDexterity && untoldplayer.SkillPoints >= 1)
 			{
 				untoldplayer.RangerDexterity = true;
 				untoldplayer.SkillPoints--;
@@ -205,7 +286,7 @@ namespace UntoldLegends.UI
 		private void OnHunterAcrobatics(UIMouseEvent evt, UIElement listeningElement)
 		{
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
-			if (untoldplayer.HunterAcrobatics == false && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity == true)
+			if (!untoldplayer.HunterAcrobatics && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity)
 			{
 				untoldplayer.HunterAcrobatics = true;
 				untoldplayer.SkillPoints--;
@@ -214,7 +295,7 @@ namespace UntoldLegends.UI
 		private void OnAerialTakeover(UIMouseEvent evt, UIElement listeningElement)
 		{
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
-			if (untoldplayer.AerialTakeover == false && untoldplayer.SkillPoints >= 1 && untoldplayer.HunterAcrobatics == true)
+			if (!untoldplayer.AerialTakeover && untoldplayer.SkillPoints >= 1 && untoldplayer.HunterAcrobatics)
 			{
 				untoldplayer.AerialTakeover = true;
 				untoldplayer.SkillPoints--;
@@ -223,7 +304,7 @@ namespace UntoldLegends.UI
 		private void OnHunterInstincts(UIMouseEvent evt, UIElement listeningElement)
 		{
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
-			if (untoldplayer.HunterInstincts == false && untoldplayer.SkillPoints >= 1 && untoldplayer.HunterAcrobatics == true)
+			if (!untoldplayer.HunterInstincts && untoldplayer.SkillPoints >= 1 && untoldplayer.HunterAcrobatics)
 			{
 				untoldplayer.HunterInstincts = true;
 				untoldplayer.SkillPoints--;
@@ -232,7 +313,7 @@ namespace UntoldLegends.UI
 		private void OnSharpenedArrows(UIMouseEvent evt, UIElement listeningElement)
 		{
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
-			if (untoldplayer.SharpenedArrows == false && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity == true)
+			if (!untoldplayer.SharpenedArrows && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity)
 			{
 				untoldplayer.SharpenedArrows = true;
 				untoldplayer.SkillPoints--;
@@ -241,9 +322,45 @@ namespace UntoldLegends.UI
 		private void OnSuperSharpenedArrows(UIMouseEvent evt, UIElement listeningElement)
 		{
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
-			if (untoldplayer.SuperSharpenedArrows == false && untoldplayer.SkillPoints >= 1 && untoldplayer.SharpenedArrows == true)
+			if (!untoldplayer.SuperSharpenedArrows && untoldplayer.SkillPoints >= 1 && untoldplayer.SharpenedArrows)
 			{
 				untoldplayer.SuperSharpenedArrows = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnAchillesHeel(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.AchillesHeel && untoldplayer.SkillPoints >= 1 && untoldplayer.SuperSharpenedArrows && untoldplayer.LuckyShots)
+			{
+				untoldplayer.AchillesHeel = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnPoisonedArrows(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.PoisonedArrows && untoldplayer.SkillPoints >= 1 && untoldplayer.SharpenedArrows)
+			{
+				untoldplayer.PoisonedArrows = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnEaglesEyes(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.EaglesEyes && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity)
+			{
+				untoldplayer.EaglesEyes = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnMarksmansConcentration(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.MarksmansConcentration && untoldplayer.SkillPoints >= 1 && untoldplayer.EaglesEyes)
+			{
+				untoldplayer.MarksmansConcentration = true;
 				untoldplayer.SkillPoints--;
 			}
 		}
