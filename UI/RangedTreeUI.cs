@@ -25,6 +25,8 @@ namespace UntoldLegends.UI
 		UIImageButton PoisonedArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/PoisonedArrows0"));
 		UIImageButton EaglesEyes = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/EaglesEyes0"));
 		UIImageButton MarksmansConcentration = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration0"));
+		UIImageButton HuntersFocus = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HuntersFocus0"));
+		UIImageButton Camouflage = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -132,6 +134,20 @@ namespace UntoldLegends.UI
 			MarksmansConcentration.OnClick += new MouseEvent(OnMarksmansConcentration);
 			panel.Append(MarksmansConcentration);
 
+			HuntersFocus.Width.Set(64, 0);
+			HuntersFocus.Height.Set(64, 0);
+			HuntersFocus.HAlign = 0.5f;
+			HuntersFocus.VAlign = 0.86f;
+			HuntersFocus.OnClick += new MouseEvent(OnHuntersFocus);
+			panel.Append(HuntersFocus);
+
+			Camouflage.Width.Set(64, 0);
+			Camouflage.Height.Set(64, 0);
+			Camouflage.HAlign = 0.68f;
+			Camouflage.VAlign = 0.86f;
+			Camouflage.OnClick += new MouseEvent(OnCamouflage);
+			panel.Append(Camouflage);
+
 		}
 		public override void Update(GameTime gameTime)
 		{
@@ -192,6 +208,14 @@ namespace UntoldLegends.UI
 				{
 					DescriptionText.SetText("[c/ffec00:Marksman's Concentration]\nWhile holding a Bow and not running fast,\nvision decreased but damage increased by 5%\n[c/b40000:Requires: Eagle's Eyes]");
 				}
+				if (HuntersFocus.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Hunter's Focus]\nWhile holding a Bow and not running fast,\nyou can clearly see all enemies near you\n[c/b40000:Requires: Marksman's Concentration]");
+				}
+				if (Camouflage.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Camouflage]\nWhile standing still or walking very\nslowly, enemy agro is reduced\n[c/b40000:Requires: Hunter's Focus]");
+				}
 
 			if (untoldplayer.RangerDexterity == false)
 				{
@@ -214,6 +238,22 @@ namespace UntoldLegends.UI
 					else
 					{
 						MarksmansConcentration.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration2"));
+						if (untoldplayer.HuntersFocus == false)
+						{
+							HuntersFocus.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HuntersFocus1"));
+						}
+						else
+						{
+							HuntersFocus.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HuntersFocus2"));
+							if (untoldplayer.Camouflage == false)
+							{
+								Camouflage.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage1"));
+							}
+							else
+							{
+								Camouflage.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage2"));
+							}
+						}
 					}
 				}
 				if (untoldplayer.SharpenedArrows == false)
@@ -234,6 +274,10 @@ namespace UntoldLegends.UI
 					if (untoldplayer.SuperSharpenedArrows == false)
 					{
 						SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows1"));
+					}
+					else
+					{
+						SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows2"));
 						if (untoldplayer.AchillesHeel)
 						{
 							AchillesHeel.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AchillesHeel2"));
@@ -242,10 +286,6 @@ namespace UntoldLegends.UI
 						{
 							AchillesHeel.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AchillesHeel1"));
 						}
-					}
-					else
-					{
-						SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows2"));
 					}
 				}
 				if (untoldplayer.HunterAcrobatics == false)
@@ -361,6 +401,24 @@ namespace UntoldLegends.UI
 			if (!untoldplayer.MarksmansConcentration && untoldplayer.SkillPoints >= 1 && untoldplayer.EaglesEyes)
 			{
 				untoldplayer.MarksmansConcentration = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnHuntersFocus(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.HuntersFocus && untoldplayer.SkillPoints >= 1 && untoldplayer.MarksmansConcentration)
+			{
+				untoldplayer.HuntersFocus = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnCamouflage(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.Camouflage && untoldplayer.SkillPoints >= 1 && untoldplayer.HuntersFocus)
+			{
+				untoldplayer.Camouflage = true;
 				untoldplayer.SkillPoints--;
 			}
 		}

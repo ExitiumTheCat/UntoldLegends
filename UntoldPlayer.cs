@@ -33,32 +33,123 @@ namespace UntoldLegends
         public bool HuntersFocus;
         public bool Camouflage;
         public bool ShadowFormSkill = true;
+        public bool ShadowFormActivated = true;
         public bool ShadowArrows = true;
         public bool ShadowBullets = true;
-        public bool BetterGunpowder = true;
-        public bool DimensionalMagazines = true;
+        public bool BetterGunpowder;
+        public bool DimensionalMagazines;
         public bool DimensionalBullets = true;
         public bool LuckyShots = true;
-        public bool GoldenFingers = true;
+        public bool GoldenFingers;
         public bool Speedy = true;
         public bool FasterGelCombustion = true;
         public bool Stress = true;
         public bool BulletStorm = true;
-        public bool BulletHell = true;
+        public bool BulletHell;
         //Magic Bools
         //Summoner Bools
         public override TagCompound Save()
         {
             return new TagCompound
             {
-                //     {"Hours", Hours},
+                     //Meele Tags
+                     //Ranged Tags
+                     {"Experience", Experience},
+                     {"Level", Level},
+                     {"SkillPoints", SkillPoints},
+                     {"XPLimit", XPLimit},
+                     {"RangerDexterity", RangerDexterity},
+                     {"HunterAcrobatics", HunterAcrobatics},
+                     {"AerialTakeover", AerialTakeover},
+                     {"HunterInstincts", HunterInstincts},
+                     {"SharpenedArrows", SharpenedArrows},
+                     {"SuperSharpenedArrows", SuperSharpenedArrows},
+                     {"AchillesHeel", AchillesHeel},
+                     {"PoisonedArrows", PoisonedArrows},
+                     {"EaglesEyes", EaglesEyes},
+                     {"MarksmansConcentration", MarksmansConcentration},
+                     {"HuntersFocus", HuntersFocus},
+                     {"Camouflage", Camouflage},
+                     {"ShadowFormSkill", ShadowFormSkill},
+                     {"ShadowArrows", ShadowArrows},
+                     {"ShadowBullets", ShadowBullets},
+                     {"BetterGunpowder", BetterGunpowder},
+                     {"DimensionalMagazines", DimensionalMagazines},
+                     {"DimensionalBullets", DimensionalBullets},
+                     {"LuckyShots", LuckyShots},
+                     {"GoldenFingers", GoldenFingers},
+                     {"Speedy", Speedy},
+                     {"FasterGelCombustion", FasterGelCombustion},
+                     {"Stress", Stress},
+                     {"BulletStorm", BulletStorm},
+                     {"BulletHell", BulletHell},
+                     //Magic Tags
+                     //Summoner Tags
             };
         }
 
         public override void Load(TagCompound tag)
         {
-            //     if (tag.ContainsKey("Hours"))
-            //        Hours = tag.GetInt("Hours");
+                 //Melee Tags
+                 //RangedTags
+                 if (tag.ContainsKey("Experience"))
+                    Experience = tag.GetInt("Experience");
+                 if (tag.ContainsKey("Level"))
+                    Level = tag.GetInt("Level");
+                 if (tag.ContainsKey("SkillPoints"))
+                    SkillPoints = tag.GetInt("SkillPoints");
+                 if (tag.ContainsKey("XPLimit"))
+                    XPLimit = tag.GetInt("XPLimit");
+                 if (tag.ContainsKey("HunterAcrobatics"))
+                    HunterAcrobatics = tag.GetBool("HunterAcrobatics");
+                 if (tag.ContainsKey("AerialTakeover"))
+                    AerialTakeover = tag.GetBool("AerialTakeover");
+                 if (tag.ContainsKey("HunterInstincts"))
+                    HunterInstincts = tag.GetBool("HunterInstincts");
+                 if (tag.ContainsKey("SharpenedArrows"))
+                    SharpenedArrows = tag.GetBool("SharpenedArrows");
+                 if (tag.ContainsKey("SuperSharpenedArrows"))
+                    SuperSharpenedArrows = tag.GetBool("SuperSharpenedArrows");
+                 if (tag.ContainsKey("AchillesHeel"))
+                    AchillesHeel = tag.GetBool("AchillesHeel");
+                 if (tag.ContainsKey("PoisonedArrows"))
+                    PoisonedArrows = tag.GetBool("PoisonedArrows");
+                 if (tag.ContainsKey("EaglesEyes"))
+                    EaglesEyes = tag.GetBool("EaglesEyes");
+                 if (tag.ContainsKey("MarksmansConcentration"))
+                    MarksmansConcentration = tag.GetBool("MarksmansConcentration");
+                 if (tag.ContainsKey("HuntersFocus"))
+                    HuntersFocus = tag.GetBool("HuntersFocus");
+                 if (tag.ContainsKey("Camouflage"))
+                    Camouflage = tag.GetBool("Camouflage");
+                 if (tag.ContainsKey("ShadowFormSkill"))
+                    ShadowFormSkill = tag.GetBool("ShadowFormSkill");
+                 if (tag.ContainsKey("ShadowArrows"))
+                    ShadowArrows = tag.GetBool("ShadowArrows");
+                 if (tag.ContainsKey("ShadowBullets"))
+                    ShadowBullets = tag.GetBool("ShadowBullets");
+                 if (tag.ContainsKey("BetterGunpowder"))
+                    BetterGunpowder = tag.GetBool("BetterGunpowder");
+                 if (tag.ContainsKey("DimensionalMagazines"))
+                    DimensionalMagazines = tag.GetBool("DimensionalMagazines");
+                 if (tag.ContainsKey("DimensionalBullets"))
+                    DimensionalBullets = tag.GetBool("DimensionalBullets");
+                 if (tag.ContainsKey("LuckyShots"))
+                    LuckyShots = tag.GetBool("LuckyShots");
+                 if (tag.ContainsKey("GoldenFingers"))
+                    GoldenFingers = tag.GetBool("GoldenFingers");
+                 if (tag.ContainsKey("Speedy"))
+                    Speedy = tag.GetBool("Speedy");
+                 if (tag.ContainsKey("FasterGelCombustion"))
+                    FasterGelCombustion = tag.GetBool("FasterGelCombustion");
+                 if (tag.ContainsKey("Stress"))
+                    Stress = tag.GetBool("Stress");
+                 if (tag.ContainsKey("BulletStorm"))
+                    BulletStorm = tag.GetBool("BulletStorm");
+                 if (tag.ContainsKey("BulletHell"))
+                    BulletHell = tag.GetBool("BulletHell");
+                 //Magic Tags
+                 //Summoner Tags
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
@@ -87,6 +178,31 @@ namespace UntoldLegends
                 {
                     target.AddBuff(BuffID.Poisoned, 300);
                 }
+            }
+            if (GoldenFingers == true && player.HeldItem.useAmmo == AmmoID.Bullet)
+            {
+                if (Main.rand.NextFloat() < .10f)
+                {
+                    target.AddBuff(BuffID.Midas, 600);
+                }
+            }
+            if (DimensionalMagazines == true && player.HeldItem.useAmmo == AmmoID.Bullet)
+            {
+                if (Main.rand.NextFloat() < .15f)
+                {
+                    player.QuickSpawnItem(ItemID.MusketBall);
+                }
+            }
+            if (BulletHell == true && player.HeldItem.useAmmo == AmmoID.Bullet)
+            {
+                if (Main.rand.NextFloat() < .33f)
+                {
+                    target.AddBuff(BuffID.OnFire, 600);
+                }
+            }
+            if (LuckyShots == true && crit)
+            {
+                //eeeeeeeeeeeeeeeeee
             }
         }
         public override void PreUpdate()
@@ -182,6 +298,10 @@ namespace UntoldLegends
                 player.rangedCrit += 3;
                 player.thrownCrit += 3;
             }
+            if (BetterGunpowder == true && player.HeldItem.useAmmo == AmmoID.Bullet)
+            {
+                player.rangedDamage += 0.05f;
+            }
             //Walking Slowly
             if (player.velocity.X < 5 && player.velocity.X > -5)
             {
@@ -199,7 +319,10 @@ namespace UntoldLegends
                     player.aggro -= 450;
                 }
             }
-
+            if (Stress == true && player.statLife < 150)
+            {
+                player.allDamage += 0.10f;
+            }
         }
         public override void PostUpdateRunSpeeds()
         {
