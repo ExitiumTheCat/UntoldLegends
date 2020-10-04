@@ -37,29 +37,25 @@ namespace UntoldLegends.UI
 			panel.BackgroundColor = new Color(30, 30, 30, 150);
 			Append(panel);
 
-			SkillPointsLeftText.HAlign = 0.33f;
-			SkillPointsLeftText.VAlign = 1f;
-			SkillPointsLeftText.Height.Set(915, 0);
-			SkillPointsLeftText.Width.Set(0, 0);
-			Append(SkillPointsLeftText);
-
-			LevelText.HAlign = 0.318f;
-			LevelText.VAlign = 1f;
-			LevelText.Height.Set(950, 0);
+			LevelText.HAlign = 0.01f;
+			LevelText.VAlign = 0.02f;
+			LevelText.Height.Set(0, 0);
 			LevelText.Width.Set(0, 0);
-			Append(LevelText);
 
-			XPText.HAlign = 0.33f;
-			XPText.VAlign = 1f;
-			XPText.Height.Set(885, 0);
+			SkillPointsLeftText.HAlign = 0.01f;
+			SkillPointsLeftText.VAlign = 0.055f;
+			SkillPointsLeftText.Height.Set(0, 0);
+			SkillPointsLeftText.Width.Set(0, 0);
+
+			XPText.HAlign = 0.01f;
+			XPText.VAlign = 0.09f;
+			XPText.Height.Set(0, 0);
 			XPText.Width.Set(0, 0);
-			Append(XPText);
 
-			DescriptionText.HAlign = 0.55f;
-			DescriptionText.VAlign = 1f;
-			DescriptionText.Height.Set(950, 0);
+			DescriptionText.HAlign = 0.8f;
+			DescriptionText.VAlign = 0.02f;
+			DescriptionText.Height.Set(0, 0);
 			DescriptionText.Width.Set(0, 0);
-			Append(DescriptionText);
 
 			//HAlign 18
 			//VAlign 12
@@ -148,6 +144,10 @@ namespace UntoldLegends.UI
 			Camouflage.OnClick += new MouseEvent(OnCamouflage);
 			panel.Append(Camouflage);
 
+			panel.Append(LevelText);
+			panel.Append(SkillPointsLeftText);
+			panel.Append(XPText);
+			panel.Append(DescriptionText);
 		}
 		public override void Update(GameTime gameTime)
 		{

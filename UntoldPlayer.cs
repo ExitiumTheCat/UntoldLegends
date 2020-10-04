@@ -207,6 +207,7 @@ namespace UntoldLegends
         }
         public override void PreUpdate()
         {
+
             if (UntoldConfigClient.Instance.BalanceChanges == true)
             {
                 player.rangedDamage -= 0.07f;
