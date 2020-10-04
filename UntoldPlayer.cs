@@ -18,8 +18,8 @@ namespace UntoldLegends
         public int Level;
         public int SkillPoints;
         public int XPLimit;
-        //Melee Bools
-        //Ranged Bools
+        //Melee
+        //Ranged
         public bool RangerDexterity;
         public bool HunterAcrobatics;
         public bool AerialTakeover;
@@ -32,8 +32,10 @@ namespace UntoldLegends
         public bool MarksmansConcentration;
         public bool HuntersFocus;
         public bool Camouflage;
-        public bool ShadowFormSkill = true;
-        public bool ShadowFormActivated = true;
+        public bool ShadowFormSkill;
+        public bool ShadowFormActivated;
+        public int ShadowFormTimer;
+        public bool ShadowFormCanCooldown;
         public bool ShadowArrows = true;
         public bool ShadowBullets = true;
         public bool BetterGunpowder;
@@ -46,14 +48,14 @@ namespace UntoldLegends
         public bool Stress = true;
         public bool BulletStorm = true;
         public bool BulletHell;
-        //Magic Bools
-        //Summoner Bools
+        //Magic
+        //Summoner
         public override TagCompound Save()
         {
             return new TagCompound
             {
-                     //Meele Tags
-                     //Ranged Tags
+                     //Meele
+                     //Ranged
                      {"Experience", Experience},
                      {"Level", Level},
                      {"SkillPoints", SkillPoints},
@@ -83,15 +85,15 @@ namespace UntoldLegends
                      {"Stress", Stress},
                      {"BulletStorm", BulletStorm},
                      {"BulletHell", BulletHell},
-                     //Magic Tags
-                     //Summoner Tags
+                     //Magic
+                     //Summoner
             };
         }
 
         public override void Load(TagCompound tag)
         {
-                 //Melee Tags
-                 //RangedTags
+                 //Melee
+                 //Ranged
                  if (tag.ContainsKey("Experience"))
                     Experience = tag.GetInt("Experience");
                  if (tag.ContainsKey("Level"))
@@ -100,6 +102,8 @@ namespace UntoldLegends
                     SkillPoints = tag.GetInt("SkillPoints");
                  if (tag.ContainsKey("XPLimit"))
                     XPLimit = tag.GetInt("XPLimit");
+                 if (tag.ContainsKey("RangerDexterity"))
+                    RangerDexterity = tag.GetBool("RangerDexterity");
                  if (tag.ContainsKey("HunterAcrobatics"))
                     HunterAcrobatics = tag.GetBool("HunterAcrobatics");
                  if (tag.ContainsKey("AerialTakeover"))
@@ -148,8 +152,8 @@ namespace UntoldLegends
                     BulletStorm = tag.GetBool("BulletStorm");
                  if (tag.ContainsKey("BulletHell"))
                     BulletHell = tag.GetBool("BulletHell");
-                 //Magic Tags
-                 //Summoner Tags
+                 //Magic
+                 //Summoner
         }
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
@@ -207,7 +211,6 @@ namespace UntoldLegends
         }
         public override void PreUpdate()
         {
-
             if (UntoldConfigClient.Instance.BalanceChanges == true)
             {
                 player.rangedDamage -= 0.07f;
@@ -324,6 +327,33 @@ namespace UntoldLegends
             {
                 player.allDamage += 0.10f;
             }
+
+            if (UntoldLegends.ActivateShadowForm.JustPressed && ShadowFormSkill && !player.HasBuff(mod.BuffType("ShadowFormCooldown")))
+            {
+                ShadowFormActivated = true;
+                ShadowFormTimer += 300;
+            }
+            if (ShadowFormTimer > 0)
+            {
+                player.blind = true;
+                player.aggro -= 700;
+                Dust shadowdust;
+                Vector2 position = Main.LocalPlayer.Center;
+                shadowdust = Main.dust[Dust.NewDust(position, 10, 10, 54, 0f, 0f, 0, new Color(109, 0, 255), 1f)];
+                shadowdust.noGravity = true;
+                shadowdust.noLight = true;
+                shadowdust.fadeIn = 1.421053f;
+                ShadowFormTimer--;
+                ShadowFormCanCooldown = true;
+            }
+            else
+            {
+                if (ShadowFormCanCooldown)
+                {
+                    player.AddBuff(mod.BuffType("ShadowFormCooldown"), 1200);
+                    ShadowFormCanCooldown = false;
+                }
+            }
         }
         public override void PostUpdateRunSpeeds()
         {
@@ -332,6 +362,12 @@ namespace UntoldLegends
                 player.moveSpeed *= 1.20f;
                 player.maxRunSpeed *= 1.20f;
                 player.accRunSpeed *= 1.20f;
+            }
+            if (ShadowFormTimer > 0)
+            {
+                player.moveSpeed *= 1.40f;
+                player.maxRunSpeed *= 1.40f;
+                player.accRunSpeed *= 1.40f;
             }
         }
     }

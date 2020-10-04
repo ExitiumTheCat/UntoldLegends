@@ -14,9 +14,11 @@ namespace UntoldLegends
 		internal RangedSkillTreeUI RangedSkillTreeUI;
 		private GameTime _lastUpdateUiGameTime;
 		public static ModHotKey OpenSkillTree;
+		public static ModHotKey ActivateShadowForm;
 		public override void Load()
 		{
 			OpenSkillTree = RegisterHotKey("Open Skill Tree", "K");
+			ActivateShadowForm = RegisterHotKey("Activate Shadow Form", "B");
 			if (!Main.dedServ)
 			{
 				InterfaceSkillTrees = new UserInterface();
@@ -29,6 +31,7 @@ namespace UntoldLegends
 		public override void Unload()
 		{
 			OpenSkillTree = null;
+			ActivateShadowForm = null;
 			RangedSkillTreeUI = null;
 		}
 		public override void UpdateUI(GameTime gameTime)

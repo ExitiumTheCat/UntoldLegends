@@ -27,6 +27,7 @@ namespace UntoldLegends.UI
 		UIImageButton MarksmansConcentration = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration0"));
 		UIImageButton HuntersFocus = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HuntersFocus0"));
 		UIImageButton Camouflage = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage0"));
+		UIImageButton ShadowForm = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -144,6 +145,13 @@ namespace UntoldLegends.UI
 			Camouflage.OnClick += new MouseEvent(OnCamouflage);
 			panel.Append(Camouflage);
 
+			ShadowForm.Width.Set(64, 0);
+			ShadowForm.Height.Set(64, 0);
+			ShadowForm.HAlign = 0.68f;
+			ShadowForm.VAlign = 0.98f;
+			ShadowForm.OnClick += new MouseEvent(OnShadowForm);
+			panel.Append(ShadowForm);
+
 			panel.Append(LevelText);
 			panel.Append(SkillPointsLeftText);
 			panel.Append(XPText);
@@ -216,6 +224,10 @@ namespace UntoldLegends.UI
 				{
 					DescriptionText.SetText("[c/ffec00:Camouflage]\nWhile standing still or walking very\nslowly, enemy agro is reduced\n[c/b40000:Requires: Hunter's Focus]");
 				}
+				if (ShadowForm.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Shadow Form (Active Ability)]\nEnemy aggro is greatly reduced\nand movement speed is increased\nDuration: 5 Seconds | Cooldown: 20 Seconds\n[c/b40000:Requires: Camouflage]");
+				}
 
 			if (untoldplayer.RangerDexterity == false)
 				{
@@ -252,6 +264,14 @@ namespace UntoldLegends.UI
 							else
 							{
 								Camouflage.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage2"));
+								if (untoldplayer.ShadowFormSkill == false)
+								{
+									ShadowForm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm1"));
+								}
+								else
+								{
+									ShadowForm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm2"));
+								}
 							}
 						}
 					}
@@ -419,6 +439,15 @@ namespace UntoldLegends.UI
 			if (!untoldplayer.Camouflage && untoldplayer.SkillPoints >= 1 && untoldplayer.HuntersFocus)
 			{
 				untoldplayer.Camouflage = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnShadowForm(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.ShadowFormSkill && untoldplayer.SkillPoints >= 1 && untoldplayer.Camouflage)
+			{
+				untoldplayer.ShadowFormSkill = true;
 				untoldplayer.SkillPoints--;
 			}
 		}
