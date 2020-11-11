@@ -29,6 +29,12 @@ namespace UntoldLegends.UI
 		UIImageButton Camouflage = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage0"));
 		UIImageButton ShadowForm = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm0"));
 		UIImageButton ShadowArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows0"));
+		UIImageButton ShadowBullets = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowBullets0"));
+		UIImageButton BetterGunpowder = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder0"));
+		UIImageButton DimensionalMagazines = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalMagazines0"));
+		UIImageButton DimensionalBullets = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalBullets0"));
+		UIImageButton LuckyShots = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots0"));
+		UIImageButton GoldenFingers = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/GoldenFingers0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -59,8 +65,8 @@ namespace UntoldLegends.UI
 			DescriptionText.Height.Set(0, 0);
 			DescriptionText.Width.Set(0, 0);
 
-			//HAlign 18
-			//VAlign 12
+			//HAlign +18
+			//VAlign -12
 
 			RangersDexterity.Width.Set(64, 0);
 			RangersDexterity.Height.Set(64, 0);
@@ -160,6 +166,48 @@ namespace UntoldLegends.UI
 			ShadowArrows.OnClick += new MouseEvent(OnShadowArrows);
 			panel.Append(ShadowArrows);
 
+			ShadowBullets.Width.Set(64, 0);
+			ShadowBullets.Height.Set(64, 0);
+			ShadowBullets.HAlign = 0.5f;
+			ShadowBullets.VAlign = 0.98f;
+			ShadowBullets.OnClick += new MouseEvent(OnShadowBullets);
+			panel.Append(ShadowBullets);
+
+			BetterGunpowder.Width.Set(64, 0);
+			BetterGunpowder.Height.Set(64, 0);
+			BetterGunpowder.HAlign = 0.32f;
+			BetterGunpowder.VAlign = 0.5f;
+			BetterGunpowder.OnClick += new MouseEvent(OnBetterGunpowder);
+			panel.Append(BetterGunpowder);
+
+			DimensionalMagazines.Width.Set(64, 0);
+			DimensionalMagazines.Height.Set(64, 0);
+			DimensionalMagazines.HAlign = 0.32f;
+			DimensionalMagazines.VAlign = 0.38f;
+			DimensionalMagazines.OnClick += new MouseEvent(OnDimensionalMagazines);
+			panel.Append(DimensionalMagazines);
+
+			DimensionalBullets.Width.Set(64, 0);
+			DimensionalBullets.Height.Set(64, 0);
+			DimensionalBullets.HAlign = 0.14f;
+			DimensionalBullets.VAlign = 0.38f;
+			DimensionalBullets.OnClick += new MouseEvent(OnDimensionalBullets);
+			panel.Append(DimensionalBullets);
+
+			LuckyShots.Width.Set(64, 0);
+			LuckyShots.Height.Set(64, 0);
+			LuckyShots.HAlign = 0.14f;
+			LuckyShots.VAlign = 0.5f;
+			LuckyShots.OnClick += new MouseEvent(OnLuckyShots);
+			panel.Append(LuckyShots);
+
+			GoldenFingers.Width.Set(64, 0);
+			GoldenFingers.Height.Set(64, 0);
+			GoldenFingers.HAlign = 0.14f;
+			GoldenFingers.VAlign = 0.62f;
+			GoldenFingers.OnClick += new MouseEvent(OnGoldenFingers);
+			panel.Append(GoldenFingers);
+
 			panel.Append(LevelText);
 			panel.Append(SkillPointsLeftText);
 			panel.Append(XPText);
@@ -238,7 +286,31 @@ namespace UntoldLegends.UI
 				}
 				if (ShadowArrows.IsMouseHovering)
 				{
-					DescriptionText.SetText("[c/ffec00:Shadow Arrows]\nWooden Arrows fired while in Shadow Form\nbecome Shadow Arrows\n[c/b40000:Requires: Shadow Form]");
+					DescriptionText.SetText("[c/ffec00:Shadow Arrows]\nWooden Arrows fired while in Shadow Form\nget empowered with shadows\n[c/b40000:Requires: Shadow Form]");
+				}
+				if (ShadowBullets.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Shadow Bullets]\nMusket Balls fired while in Shadow Form\nget empowered with shadows\n[c/b40000:Requires: Shadow Form]");
+				}
+				if (BetterGunpowder.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Better Gunpowder]\nGuns deal 5% more damage\n[c/b40000:Requires: Ranger's Dexterity]");
+				}
+				if (DimensionalMagazines.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Dimensional Magazines]\nYou have a 15% chance of getting Musket Balls\nback after hitting an enemy with a bullet\n[c/b40000:Requires: Better Gunpowder]");
+				}
+				if (DimensionalBullets.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Dimensional Bullets]\nBullets gotten back from Dimensional Magazines\nhave a 50% chance of being automatically\nfired in a weaker form\n[c/b40000:Requires: Dimensional Magazines]");
+				}
+				if (LuckyShots.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Lucky Shots]\nCritical strikes grant a temporary buff\nthat increases damage by 10%\n[c/b40000:Requires: Better Gunpowder]");
+				}
+				if (GoldenFingers.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Golden Fingers]\nGuns have a 10% chance to inflict Midas\n[c/b40000:Requires: Lucky Shots]");
 				}
 
 			if (untoldplayer.RangerDexterity == false)
@@ -248,6 +320,31 @@ namespace UntoldLegends.UI
 				else
 				{
 					RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity2"));
+					BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder1"));
+				if (untoldplayer.BetterGunpowder)
+				{
+					BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder2"));
+					DimensionalMagazines.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalMagazines1"));
+					LuckyShots.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots1"));
+					if (untoldplayer.LuckyShots)
+					{
+						LuckyShots.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots2"));
+						GoldenFingers.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/GoldenFingers1"));
+						if (untoldplayer.GoldenFingers)
+						{
+							GoldenFingers.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/GoldenFingers2"));
+						}
+					}
+					if (untoldplayer.DimensionalMagazines)
+					{
+						DimensionalMagazines.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalMagazines2"));
+						DimensionalBullets.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalBullets1"));
+						if (untoldplayer.DimensionalBullets)
+						{
+							DimensionalBullets.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalBullets2"));
+						}
+					}
+				}
 				if (untoldplayer.EaglesEyes == false)
 				{
 					EaglesEyes.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/EaglesEyes1"));
@@ -284,9 +381,14 @@ namespace UntoldLegends.UI
 								{
 									ShadowForm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm2"));
 									ShadowArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows1"));
+									ShadowBullets.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowBullets1"));
 									if (untoldplayer.ShadowArrows)
 									{
 										ShadowArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows2"));
+									}
+									if (untoldplayer.ShadowBullets)
+									{
+										ShadowBullets.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowBullets2"));
 									}
 								}
 							}
@@ -474,6 +576,60 @@ namespace UntoldLegends.UI
 			if (!untoldplayer.ShadowArrows && untoldplayer.SkillPoints >= 1 && untoldplayer.ShadowFormSkill)
 			{
 				untoldplayer.ShadowArrows = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnShadowBullets(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.ShadowBullets && untoldplayer.SkillPoints >= 1 && untoldplayer.ShadowFormSkill)
+			{
+				untoldplayer.ShadowBullets = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnBetterGunpowder(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.BetterGunpowder && untoldplayer.SkillPoints >= 1 && untoldplayer.RangerDexterity)
+			{
+				untoldplayer.BetterGunpowder = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnDimensionalMagazines(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.DimensionalMagazines && untoldplayer.SkillPoints >= 1 && untoldplayer.BetterGunpowder)
+			{
+				untoldplayer.DimensionalMagazines = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnDimensionalBullets(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.DimensionalBullets && untoldplayer.SkillPoints >= 1 && untoldplayer.DimensionalMagazines)
+			{
+				untoldplayer.DimensionalBullets = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnLuckyShots(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.LuckyShots && untoldplayer.SkillPoints >= 1 && untoldplayer.BetterGunpowder)
+			{
+				untoldplayer.LuckyShots = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnGoldenFingers(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.GoldenFingers && untoldplayer.SkillPoints >= 1 && untoldplayer.LuckyShots)
+			{
+				untoldplayer.GoldenFingers = true;
 				untoldplayer.SkillPoints--;
 			}
 		}

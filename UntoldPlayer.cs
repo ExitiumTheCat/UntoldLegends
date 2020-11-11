@@ -1,14 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.World;
-using System.Collections.Generic;
 using Terraria.ModLoader.IO;
-using UntoldLegends;
-using System;
-using Terraria.GameInput;
+using UntoldLegends.Sprites;
 
 namespace UntoldLegends
 {
@@ -37,11 +32,11 @@ namespace UntoldLegends
         public int ShadowFormTimer;
         public bool ShadowFormCanCooldown;
         public bool ShadowArrows;
-        public bool ShadowBullets = true;
+        public bool ShadowBullets;
         public bool BetterGunpowder;
         public bool DimensionalMagazines;
-        public bool DimensionalBullets = true;
-        public bool LuckyShots = true;
+        public bool DimensionalBullets;
+        public bool LuckyShots;
         public bool GoldenFingers;
         public bool Speedy = true;
         public bool FasterGelCombustion = true;
@@ -196,7 +191,14 @@ namespace UntoldLegends
             {
                 if (Main.rand.NextFloat() < .15f)
                 {
-                    player.QuickSpawnItem(ItemID.MusketBall);
+                    if (DimensionalBullets && Main.rand.NextFloat() < .50f)
+                    {
+                        Projectile.NewProjectile(player.Center, player.DirectionTo(Main.MouseWorld) * 22f, ModContent.ProjectileType<DimensionalBullets>(), 5, 0, player.whoAmI);
+                    }
+                    else
+                    {
+                        player.QuickSpawnItem(ItemID.MusketBall);
+                    }
                 }
             }
             if (BulletHell == true && player.HeldItem.useAmmo == AmmoID.Bullet)
@@ -208,7 +210,7 @@ namespace UntoldLegends
             }
             if (LuckyShots == true && crit)
             {
-                //eeeeeeeeeeeeeeeeee
+                player.AddBuff(mod.BuffType("LuckyShotsBuff"), 300);
             }
         }
         public override void PreUpdate()
