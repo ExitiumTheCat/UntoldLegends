@@ -16,7 +16,7 @@ namespace UntoldLegends
     {
         public int Experience;
         public int Level;
-        public int SkillPoints;
+        public int SkillPoints = 15;
         public int XPLimit;
         //Melee
         //Ranged
@@ -36,7 +36,7 @@ namespace UntoldLegends
         public bool ShadowFormActivated;
         public int ShadowFormTimer;
         public bool ShadowFormCanCooldown;
-        public bool ShadowArrows = true;
+        public bool ShadowArrows;
         public bool ShadowBullets = true;
         public bool BetterGunpowder;
         public bool DimensionalMagazines;
@@ -94,6 +94,7 @@ namespace UntoldLegends
         {
                  //Melee
                  //Ranged
+                 /*
                  if (tag.ContainsKey("Experience"))
                     Experience = tag.GetInt("Experience");
                  if (tag.ContainsKey("Level"))
@@ -152,6 +153,7 @@ namespace UntoldLegends
                     BulletStorm = tag.GetBool("BulletStorm");
                  if (tag.ContainsKey("BulletHell"))
                     BulletHell = tag.GetBool("BulletHell");
+                 */
                  //Magic
                  //Summoner
         }
@@ -352,6 +354,7 @@ namespace UntoldLegends
                 {
                     player.AddBuff(mod.BuffType("ShadowFormCooldown"), 1200);
                     ShadowFormCanCooldown = false;
+                    ShadowFormActivated = false;
                 }
             }
         }

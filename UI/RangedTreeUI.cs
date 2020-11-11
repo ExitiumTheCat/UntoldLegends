@@ -28,6 +28,7 @@ namespace UntoldLegends.UI
 		UIImageButton HuntersFocus = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HuntersFocus0"));
 		UIImageButton Camouflage = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage0"));
 		UIImageButton ShadowForm = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm0"));
+		UIImageButton ShadowArrows = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -152,6 +153,13 @@ namespace UntoldLegends.UI
 			ShadowForm.OnClick += new MouseEvent(OnShadowForm);
 			panel.Append(ShadowForm);
 
+			ShadowArrows.Width.Set(64, 0);
+			ShadowArrows.Height.Set(64, 0);
+			ShadowArrows.HAlign = 0.86f;
+			ShadowArrows.VAlign = 0.98f;
+			ShadowArrows.OnClick += new MouseEvent(OnShadowArrows);
+			panel.Append(ShadowArrows);
+
 			panel.Append(LevelText);
 			panel.Append(SkillPointsLeftText);
 			panel.Append(XPText);
@@ -228,6 +236,10 @@ namespace UntoldLegends.UI
 				{
 					DescriptionText.SetText("[c/ffec00:Shadow Form (Active Ability)]\nEnemy aggro is greatly reduced\nand movement speed is increased\nDuration: 5 Seconds | Cooldown: 20 Seconds\n[c/b40000:Requires: Camouflage]");
 				}
+				if (ShadowArrows.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Shadow Arrows]\nWooden Arrows fired while in Shadow Form\nbecome Shadow Arrows\n[c/b40000:Requires: Shadow Form]");
+				}
 
 			if (untoldplayer.RangerDexterity == false)
 				{
@@ -271,6 +283,11 @@ namespace UntoldLegends.UI
 								else
 								{
 									ShadowForm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm2"));
+									ShadowArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows1"));
+									if (untoldplayer.ShadowArrows)
+									{
+										ShadowArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows2"));
+									}
 								}
 							}
 						}
@@ -448,6 +465,15 @@ namespace UntoldLegends.UI
 			if (!untoldplayer.ShadowFormSkill && untoldplayer.SkillPoints >= 1 && untoldplayer.Camouflage)
 			{
 				untoldplayer.ShadowFormSkill = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnShadowArrows(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.ShadowArrows && untoldplayer.SkillPoints >= 1 && untoldplayer.ShadowFormSkill)
+			{
+				untoldplayer.ShadowArrows = true;
 				untoldplayer.SkillPoints--;
 			}
 		}
