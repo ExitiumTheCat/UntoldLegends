@@ -11,7 +11,7 @@ namespace UntoldLegends
     {
         public int Experience;
         public int Level;
-        public int SkillPoints = 15;
+        public int SkillPoints;
         public int XPLimit;
         //Melee
         //Ranged
@@ -38,10 +38,10 @@ namespace UntoldLegends
         public bool DimensionalBullets;
         public bool LuckyShots;
         public bool GoldenFingers;
-        public bool Speedy = true;
-        public bool FasterGelCombustion = true;
-        public bool Stress = true;
-        public bool BulletStorm = true;
+        public bool Speedy;
+        public bool FasterGelCombustion;
+        public bool Stress;
+        public bool BulletStorm;
         public bool BulletHell;
         //Magic
         //Summoner
@@ -49,12 +49,12 @@ namespace UntoldLegends
         {
             return new TagCompound
             {
-                     //Meele
-                     //Ranged
                      {"Experience", Experience},
                      {"Level", Level},
                      {"SkillPoints", SkillPoints},
                      {"XPLimit", XPLimit},
+                     //Meele
+                     //Ranged
                      {"RangerDexterity", RangerDexterity},
                      {"HunterAcrobatics", HunterAcrobatics},
                      {"AerialTakeover", AerialTakeover},
@@ -87,9 +87,6 @@ namespace UntoldLegends
 
         public override void Load(TagCompound tag)
         {
-                 //Melee
-                 //Ranged
-                 /*
                  if (tag.ContainsKey("Experience"))
                     Experience = tag.GetInt("Experience");
                  if (tag.ContainsKey("Level"))
@@ -98,6 +95,8 @@ namespace UntoldLegends
                     SkillPoints = tag.GetInt("SkillPoints");
                  if (tag.ContainsKey("XPLimit"))
                     XPLimit = tag.GetInt("XPLimit");
+                 //Melee
+                 //Ranged
                  if (tag.ContainsKey("RangerDexterity"))
                     RangerDexterity = tag.GetBool("RangerDexterity");
                  if (tag.ContainsKey("HunterAcrobatics"))
@@ -148,7 +147,6 @@ namespace UntoldLegends
                     BulletStorm = tag.GetBool("BulletStorm");
                  if (tag.ContainsKey("BulletHell"))
                     BulletHell = tag.GetBool("BulletHell");
-                 */
                  //Magic
                  //Summoner
         }
@@ -215,10 +213,6 @@ namespace UntoldLegends
         }
         public override void PreUpdate()
         {
-            if (UntoldConfigClient.Instance.BalanceChanges == true)
-            {
-                player.rangedDamage -= 0.07f;
-            }
             switch (Level)
             {
                 case (0):
@@ -327,6 +321,15 @@ namespace UntoldLegends
                     player.aggro -= 450;
                 }
             }
+            //Walking Fast
+            if (player.velocity.X > 5 || player.velocity.X < -5)
+            {
+                if (Speedy && player.HeldItem.useAmmo == AmmoID.Bullet)
+                {
+                    player.rangedDamage += 0.04f;
+                }
+            }
+
             if (Stress == true && player.statLife < 150)
             {
                 player.allDamage += 0.10f;
@@ -359,6 +362,10 @@ namespace UntoldLegends
                     ShadowFormActivated = false;
                 }
             }
+            if (Stress && player.statLife < 150)
+            {
+                player.allDamage += 0.10f;
+            }
         }
         public override void PostUpdateRunSpeeds()
         {
@@ -374,6 +381,18 @@ namespace UntoldLegends
                 player.maxRunSpeed *= 1.40f;
                 player.accRunSpeed *= 1.40f;
             }
+        }
+        public override float UseTimeMultiplier (Item item)
+        {
+            if (BulletStorm && player.HeldItem.useAmmo == AmmoID.Bullet && player.statLife < 200)
+            {
+                return 1.1f;
+            }
+            if (FasterGelCombustion && player.HeldItem.useAmmo == AmmoID.Gel)
+            {
+                return 1.08f;
+            }
+            return 1f;
         }
     }
  }

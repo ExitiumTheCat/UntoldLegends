@@ -35,6 +35,11 @@ namespace UntoldLegends.UI
 		UIImageButton DimensionalBullets = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalBullets0"));
 		UIImageButton LuckyShots = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots0"));
 		UIImageButton GoldenFingers = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/GoldenFingers0"));
+		UIImageButton Speedy = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Speedy0"));
+		UIImageButton FasterGelCombustion = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/FasterGelCombustion0"));
+		UIImageButton Stress = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Stress0"));
+		UIImageButton BulletStorm = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletStorm0"));
+		UIImageButton BulletHell = new UIImageButton(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletHell0"));
 		public override void OnInitialize()
 		{
 			panel.Height.Set(800, 0);
@@ -208,6 +213,41 @@ namespace UntoldLegends.UI
 			GoldenFingers.OnClick += new MouseEvent(OnGoldenFingers);
 			panel.Append(GoldenFingers);
 
+			Speedy.Width.Set(64, 0);
+			Speedy.Height.Set(64, 0);
+			Speedy.HAlign = 0.32f;
+			Speedy.VAlign = 0.62f;
+			Speedy.OnClick += new MouseEvent(OnSpeedy);
+			panel.Append(Speedy);
+
+			FasterGelCombustion.Width.Set(64, 0);
+			FasterGelCombustion.Height.Set(64, 0);
+			FasterGelCombustion.HAlign = 0.32f;
+			FasterGelCombustion.VAlign = 0.74f;
+			FasterGelCombustion.OnClick += new MouseEvent(OnFasterGelCombustion);
+			panel.Append(FasterGelCombustion);
+
+			Stress.Width.Set(64, 0);
+			Stress.Height.Set(64, 0);
+			Stress.HAlign = 0.32f;
+			Stress.VAlign = 0.86f;
+			Stress.OnClick += new MouseEvent(OnStress);
+			panel.Append(Stress);
+
+			BulletStorm.Width.Set(64, 0);
+			BulletStorm.Height.Set(64, 0);
+			BulletStorm.HAlign = 0.32f;
+			BulletStorm.VAlign = 0.98f;
+			BulletStorm.OnClick += new MouseEvent(OnBulletStorm);
+			panel.Append(BulletStorm);
+
+			BulletHell.Width.Set(64, 0);
+			BulletHell.Height.Set(64, 0);
+			BulletHell.HAlign = 0.14f;
+			BulletHell.VAlign = 0.98f;
+			BulletHell.OnClick += new MouseEvent(OnBulletHell);
+			panel.Append(BulletHell);
+
 			panel.Append(LevelText);
 			panel.Append(SkillPointsLeftText);
 			panel.Append(XPText);
@@ -312,6 +352,26 @@ namespace UntoldLegends.UI
 				{
 					DescriptionText.SetText("[c/ffec00:Golden Fingers]\nGuns have a 10% chance to inflict Midas\n[c/b40000:Requires: Lucky Shots]");
 				}
+				if (Speedy.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Speedy]\nGuns deal 4% more damage while you are\nrunning fast\n[c/b40000:Requires: Better Gunpowder]");
+				}
+				if (FasterGelCombustion.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Faster Gel Combustion]\nFlamethrowers are 8% faster\n[c/b40000:Requires: Speedy]");
+				}
+				if (Stress.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Stress]\nWhen below 150 health, you deal 10% more damage\n[c/b40000:Requires: Faster Gel Combustion]");
+				}
+				if (BulletStorm.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Bullet Storm]\nWhen below 200 health, Guns are 10% faster\n[c/b40000:Requires: Stress]");
+				}
+				if (BulletHell.IsMouseHovering)
+				{
+					DescriptionText.SetText("[c/ffec00:Bullet Hell]\nWhen below 250 health, Guns have a\n33% chance of inflicting On Fire!\n[c/b40000:Requires: Bullet Storm]");
+				}
 
 			if (untoldplayer.RangerDexterity == false)
 				{
@@ -326,6 +386,31 @@ namespace UntoldLegends.UI
 					BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder2"));
 					DimensionalMagazines.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalMagazines1"));
 					LuckyShots.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots1"));
+					Speedy.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Speedy1"));
+					if (untoldplayer.Speedy)
+					{
+						Speedy.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Speedy2"));
+						FasterGelCombustion.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/FasterGelCombustion1"));
+						if (untoldplayer.FasterGelCombustion)
+						{
+							FasterGelCombustion.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/FasterGelCombustion2"));
+							Stress.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Stress1"));
+							if (untoldplayer.Stress)
+							{
+								Stress.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Stress2"));
+								BulletStorm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletStorm1"));
+								if (untoldplayer.BulletStorm)
+								{
+									BulletStorm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletStorm2"));
+									BulletHell.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletHell1"));
+									if (untoldplayer.BulletHell)
+									{
+										BulletHell.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletHell2"));
+									}
+								}
+							}
+						}
+					}
 					if (untoldplayer.LuckyShots)
 					{
 						LuckyShots.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots2"));
@@ -630,6 +715,51 @@ namespace UntoldLegends.UI
 			if (!untoldplayer.GoldenFingers && untoldplayer.SkillPoints >= 1 && untoldplayer.LuckyShots)
 			{
 				untoldplayer.GoldenFingers = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnSpeedy(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.Speedy && untoldplayer.SkillPoints >= 1 && untoldplayer.BetterGunpowder)
+			{
+				untoldplayer.Speedy = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnFasterGelCombustion(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.FasterGelCombustion && untoldplayer.SkillPoints >= 1 && untoldplayer.Speedy)
+			{
+				untoldplayer.FasterGelCombustion = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnStress(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.Stress && untoldplayer.SkillPoints >= 1 && untoldplayer.FasterGelCombustion)
+			{
+				untoldplayer.Stress = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnBulletStorm(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.BulletStorm && untoldplayer.SkillPoints >= 1 && untoldplayer.Stress)
+			{
+				untoldplayer.BulletStorm = true;
+				untoldplayer.SkillPoints--;
+			}
+		}
+		private void OnBulletHell(UIMouseEvent evt, UIElement listeningElement)
+		{
+			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
+			if (!untoldplayer.BulletHell && untoldplayer.SkillPoints >= 1 && untoldplayer.BulletStorm)
+			{
+				untoldplayer.BulletHell = true;
 				untoldplayer.SkillPoints--;
 			}
 		}
