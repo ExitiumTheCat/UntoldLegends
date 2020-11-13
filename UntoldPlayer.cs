@@ -199,7 +199,7 @@ namespace UntoldLegends
                     }
                 }
             }
-            if (BulletHell == true && player.HeldItem.useAmmo == AmmoID.Bullet)
+            if (BulletHell == true && player.HeldItem.useAmmo == AmmoID.Bullet && player.statLife < 250)
             {
                 if (Main.rand.NextFloat() < .33f)
                 {
