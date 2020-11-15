@@ -1,6 +1,6 @@
 displayName = Untold Legends, a Skill Trees Mod!
 author = ExitiumTheCat & Klink
-version = 0.1.1
+version = 0.1.1.2
 hideCode = true
 hideResources = false
 includeSource = false
