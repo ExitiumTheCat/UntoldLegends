@@ -18,6 +18,8 @@ namespace UntoldLegends
         public bool RangerDexterity;
         public bool HunterAcrobatics;
         public bool AerialTakeover;
+        public int AerialTakeoverBackflipTimer;
+        public int AerialTakeoverBackflipTimerElectricBoogaloo;
         public bool HunterInstincts;
         public bool SharpenedArrows;
         public bool SuperSharpenedArrows;
@@ -276,15 +278,41 @@ namespace UntoldLegends
                 player.jumpSpeedBoost += 1.8f;
                 player.extraFall += 8;
             }
-            if (AerialTakeover == true && player.HeldItem.useAmmo == AmmoID.Arrow)
+            if (AerialTakeover && AerialTakeoverBackflipTimer == 0 && UntoldLegends.AerialTakeoverBackflip.JustPressed)
             {
-                player.autoJump = true;
-
-                if (player.velocity.Y > 0.00000000001 || player.velocity.Y < -0.00000000001)
+                if (player.direction == 1)
                 {
-                    player.rangedDamage += 0.06f;
+                    player.velocity.X = -6;
+                }
+                else player.velocity.X = 6;
+
+                player.velocity.Y -= 10;
+                AerialTakeoverBackflipTimer += 90;
+            }
+            if (AerialTakeoverBackflipTimer > 0)
+            {
+                AerialTakeoverBackflipTimer--;
+                if (AerialTakeoverBackflipTimer > 74)
+                {
+                    if (AerialTakeoverBackflipTimerElectricBoogaloo == 0)
+                    {
+                        if (player.direction == -1)
+                        player.fullRotation += 1;
+                        else
+                        player.fullRotation -= 1;
+                        AerialTakeoverBackflipTimerElectricBoogaloo++;
+                    }
+                    else
+                    {
+                        AerialTakeoverBackflipTimerElectricBoogaloo--;
+                    }
+                }
+                else
+                {
+                    player.fullRotation = 0;
                 }
             }
+
             if (HunterInstincts == true && player.HeldItem.useAmmo == AmmoID.Arrow)
             {
                 player.dangerSense = true;
@@ -339,6 +367,8 @@ namespace UntoldLegends
             {
                 ShadowFormActivated = true;
                 ShadowFormTimer += 300;
+                player.velocity.Y += 20;
+                player.velocity.X -= 20;
             }
             if (ShadowFormTimer > 0)
             {

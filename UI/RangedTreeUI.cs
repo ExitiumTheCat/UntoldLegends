@@ -282,7 +282,7 @@ namespace UntoldLegends.UI
 				}
 				if (AerialTakeover.IsMouseHovering)
 				{
-					DescriptionText.SetText("[c/ffec00:Aerial Takeover]\nBows deal 5% more damage when you have\nvertical velocity\nEnemies with vertical velocity take extra damage\n[c/b40000:Requires: Hunter Acrobatics]");
+					DescriptionText.SetText("[c/ffec00:Aerial Takeover]\nPress the Binded Key to propel backwards\nand upwards\n[c/b40000:Requires: Hunter Acrobatics]");
 				}
 				if (HunterInstincts.IsMouseHovering)
 				{

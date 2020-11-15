@@ -15,10 +15,12 @@ namespace UntoldLegends
 		private GameTime _lastUpdateUiGameTime;
 		public static ModHotKey OpenSkillTree;
 		public static ModHotKey ActivateShadowForm;
+		public static ModHotKey AerialTakeoverBackflip;
 		public override void Load()
 		{
 			OpenSkillTree = RegisterHotKey("Open Skill Tree", "K");
 			ActivateShadowForm = RegisterHotKey("Activate Shadow Form", "B");
+			AerialTakeoverBackflip = RegisterHotKey("Aerial Takeover Backflip", "Q");
 			if (!Main.dedServ)
 			{
 				InterfaceSkillTrees = new UserInterface();
@@ -33,6 +35,7 @@ namespace UntoldLegends
 			OpenSkillTree = null;
 			ActivateShadowForm = null;
 			RangedSkillTreeUI = null;
+			AerialTakeoverBackflip = null;
 		}
 		public override void UpdateUI(GameTime gameTime)
 		{
