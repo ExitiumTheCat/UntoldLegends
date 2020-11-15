@@ -255,6 +255,33 @@ namespace UntoldLegends.UI
 		}
 		public override void Update(GameTime gameTime)
 		{
+			RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity1"));
+			HunterAcrobatics.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterAcrobatics0"));
+			AerialTakeover.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AerialTakeover0"));
+			HunterInstincts.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HunterInstincts0"));
+			SharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SharpenedArrows0"));
+			SuperSharpenedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/SuperSharpenedArrows0"));
+			AchillesHeel.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/AchillesHeel0"));
+			PoisonedArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/PoisonedArrows0"));
+			EaglesEyes.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/EaglesEyes0"));
+			MarksmansConcentration.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/MarksmansConcentration0"));
+			HuntersFocus.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/HuntersFocus0"));
+			Camouflage.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Camouflage0"));
+			ShadowForm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowForm0"));
+			ShadowArrows.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowArrows0"));
+			ShadowBullets.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/ShadowBullets0"));
+			BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder0"));
+			DimensionalMagazines.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalMagazines0"));
+			DimensionalBullets.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/DimensionalBullets0"));
+			LuckyShots.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/LuckyShots0"));
+			GoldenFingers.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/GoldenFingers0"));
+			Speedy.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Speedy0"));
+			FasterGelCombustion.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/FasterGelCombustion0"));
+			Stress.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/Stress0"));
+			BulletStorm.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletStorm0"));
+			BulletHell.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BulletHell0"));
+
+
 			UntoldPlayer untoldplayer = Main.LocalPlayer.GetModPlayer<UntoldPlayer>();
 
 			if (Main.LocalPlayer.GetModPlayer<UntoldPlayer>().Level == 15)
