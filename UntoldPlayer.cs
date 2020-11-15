@@ -335,7 +335,7 @@ namespace UntoldLegends
                 player.allDamage += 0.10f;
             }
 
-            if (UntoldLegends.ActivateShadowForm.JustPressed && ShadowFormSkill && !player.HasBuff(mod.BuffType("ShadowFormCooldown")))
+            if (UntoldLegends.ActivateShadowForm.JustPressed && ShadowFormSkill && !player.HasBuff(mod.BuffType("ShadowFormCooldown")) && ShadowFormTimer == 0)
             {
                 ShadowFormActivated = true;
                 ShadowFormTimer += 300;
