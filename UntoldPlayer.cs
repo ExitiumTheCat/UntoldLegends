@@ -292,24 +292,27 @@ namespace UntoldLegends
             if (AerialTakeoverBackflipTimer > 0)
             {
                 AerialTakeoverBackflipTimer--;
-                if (AerialTakeoverBackflipTimer > 74)
+                if (UntoldClientConfig.Instance.AerialTakeoverRotationVisualConfig)
                 {
-                    if (AerialTakeoverBackflipTimerElectricBoogaloo == 0)
+                    if (AerialTakeoverBackflipTimer > 74)
                     {
-                        if (player.direction == -1)
-                        player.fullRotation += 1;
+                        if (AerialTakeoverBackflipTimerElectricBoogaloo == 0)
+                        {
+                            if (player.direction == -1)
+                                player.fullRotation += 1;
+                            else
+                                player.fullRotation -= 1;
+                            AerialTakeoverBackflipTimerElectricBoogaloo++;
+                        }
                         else
-                        player.fullRotation -= 1;
-                        AerialTakeoverBackflipTimerElectricBoogaloo++;
+                        {
+                            AerialTakeoverBackflipTimerElectricBoogaloo--;
+                        }
                     }
                     else
                     {
-                        AerialTakeoverBackflipTimerElectricBoogaloo--;
+                        player.fullRotation = 0;
                     }
-                }
-                else
-                {
-                    player.fullRotation = 0;
                 }
             }
 
