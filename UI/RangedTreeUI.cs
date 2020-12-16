@@ -299,115 +299,115 @@ namespace UntoldLegends.UI
 			{
 				Main.LocalPlayer.mouseInterface = true;
 			}
-				if (RangersDexterity.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Ranger's Dexterity]\nMultiplies your movement speed by 20%\nwhile holding a Ranged Weapon");
-				}
-				if (HunterAcrobatics.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Hunter Acrobatics]\nIncreased jump height while holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]");
-				}
-				if (AerialTakeover.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Aerial Takeover]\nPress the Binded Key to propel backwards\nand upwards\n[c/b40000:Requires: Hunter Acrobatics]");
-				}
-				if (HunterInstincts.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Hunter Instincts]\nWhile holding a bow, you can clearly see\nall traps around you\n[c/b40000:Requires: Hunter Acrobatics]");
-				}
-				if (SharpenedArrows.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Sharpened Arrows]\nIncreases armor penetration by 5 while\nwhile holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]");
-				}
-				if (SuperSharpenedArrows.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Super Sharpened Arrows]\nWooden Arrows penetrate 1 enemy\n[c/b40000:Requires: Sharpened Arrows]");
-				}
-				if (AchillesHeel.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Achilles' Heel]\nWhen hitting a non-Boss enemy, you have\na 2% chance of instakilling them\n[c/b40000:Requires: SS Arrows & Lucky Shots]");
-				}
-				if (PoisonedArrows.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Poisoned Arrows]\nArrows have a 15% chance of inflicting\nPoisoned\n[c/b40000:Requires: Sharpened Arrows]");
-				}
-				if (EaglesEyes.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Eagle's Eyes]\n3% increased critical chance\n[c/b40000:Requires: Ranger's Dexterity]");
-				}
-				if (MarksmansConcentration.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Marksman's Concentration]\nWhile holding a Bow and not running fast,\nvision decreased but damage increased by 5%\n[c/b40000:Requires: Eagle's Eyes]");
-				}
-				if (HuntersFocus.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Hunter's Focus]\nWhile holding a Bow and not running fast,\nyou can clearly see all enemies near you\n[c/b40000:Requires: Marksman's Concentration]");
-				}
-				if (Camouflage.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Camouflage]\nWhile standing still or walking very\nslowly, enemy agro is reduced\n[c/b40000:Requires: Hunter's Focus]");
-				}
-				if (ShadowForm.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Shadow Form (Active Ability)]\nEnemy aggro is greatly reduced\nand movement speed is increased\nDuration: 5 Seconds | Cooldown: 20 Seconds\n[c/b40000:Requires: Camouflage]");
-				}
-				if (ShadowArrows.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Shadow Arrows]\nWooden Arrows fired while in Shadow Form\nget empowered with shadows\n[c/b40000:Requires: Shadow Form]");
-				}
-				if (ShadowBullets.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Shadow Bullets]\nMusket Balls fired while in Shadow Form\nget empowered with shadows\n[c/b40000:Requires: Shadow Form]");
-				}
-				if (BetterGunpowder.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Better Gunpowder]\nGuns deal 5% more damage\n[c/b40000:Requires: Ranger's Dexterity]");
-				}
-				if (DimensionalMagazines.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Dimensional Magazines]\nYou have a 15% chance of getting Musket Balls\nback after hitting an enemy with a bullet\n[c/b40000:Requires: Better Gunpowder]");
-				}
-				if (DimensionalBullets.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Dimensional Bullets]\nBullets gotten back from Dimensional Magazines\nhave a 50% chance of being automatically\nfired in a weaker form\n[c/b40000:Requires: Dimensional Magazines]");
-				}
-				if (LuckyShots.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Lucky Shots]\nCritical strikes grant a temporary buff\nthat increases damage by 10%\n[c/b40000:Requires: Better Gunpowder]");
-				}
-				if (GoldenFingers.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Golden Fingers]\nGuns have a 10% chance to inflict Midas\n[c/b40000:Requires: Lucky Shots]");
-				}
-				if (Speedy.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Speedy]\nGuns deal 4% more damage while you are\nrunning fast\n[c/b40000:Requires: Better Gunpowder]");
-				}
-				if (FasterGelCombustion.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Faster Gel Combustion]\nFlamethrowers are 8% faster\n[c/b40000:Requires: Speedy]");
-				}
-				if (Stress.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Stress]\nWhen below 150 health, you deal 10% more damage\n[c/b40000:Requires: Faster Gel Combustion]");
-				}
-				if (BulletStorm.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Bullet Storm]\nWhen below 200 health, Guns are 10% faster\n[c/b40000:Requires: Stress]");
-				}
-				if (BulletHell.IsMouseHovering)
-				{
-					DescriptionText.SetText("[c/ffec00:Bullet Hell]\nWhen below 250 health, Guns have a\n33% chance of inflicting On Fire!\n[c/b40000:Requires: Bullet Storm]");
-				}
+			if (RangersDexterity.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Ranger's Dexterity]\nMultiplies your movement speed by 20%\nwhile holding a Ranged Weapon");
+			}
+			if (HunterAcrobatics.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Hunter Acrobatics]\nIncreased jump height while holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]");
+			}
+			if (AerialTakeover.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Aerial Takeover]\nPress the Binded Key to propel backwards\nand upwards\n[c/b40000:Requires: Hunter Acrobatics]");
+			}
+			if (HunterInstincts.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Hunter Instincts]\nWhile holding a bow, you can clearly see\nall traps around you\n[c/b40000:Requires: Hunter Acrobatics]");
+			}
+			if (SharpenedArrows.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Sharpened Arrows]\nIncreases armor penetration by 5 while\nwhile holding a Bow\n[c/b40000:Requires: Ranger's Dexterity]");
+			}
+			if (SuperSharpenedArrows.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Super Sharpened Arrows]\nWooden Arrows penetrate 1 enemy\n[c/b40000:Requires: Sharpened Arrows]");
+			}
+			if (AchillesHeel.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Achilles' Heel]\nWhen hitting a non-Boss enemy, you have\na 2% chance of instakilling them\n[c/b40000:Requires: SS Arrows & Lucky Shots]");
+			}
+			if (PoisonedArrows.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Poisoned Arrows]\nArrows have a 15% chance of inflicting\nPoisoned\n[c/b40000:Requires: Sharpened Arrows]");
+			}
+			if (EaglesEyes.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Eagle's Eyes]\n3% increased critical chance\n[c/b40000:Requires: Ranger's Dexterity]");
+			}
+			if (MarksmansConcentration.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Marksman's Concentration]\nWhile holding a Bow and not running fast,\nvision decreased but damage increased by 5%\n[c/b40000:Requires: Eagle's Eyes]");
+			}
+			if (HuntersFocus.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Hunter's Focus]\nWhile holding a Bow and not running fast,\nyou can clearly see all enemies near you\n[c/b40000:Requires: Marksman's Concentration]");
+			}
+			if (Camouflage.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Camouflage]\nWhile standing still or walking very\nslowly, enemy agro is reduced\n[c/b40000:Requires: Hunter's Focus]");
+			}
+			if (ShadowForm.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Shadow Form (Active Ability)]\nEnemy aggro is greatly reduced\nand movement speed is increased\nDuration: 5 Seconds | Cooldown: 20 Seconds\n[c/b40000:Requires: Camouflage]");
+			}
+			if (ShadowArrows.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Shadow Arrows]\nWooden Arrows fired while in Shadow Form\nget empowered with shadows\n[c/b40000:Requires: Shadow Form]");
+			}
+			if (ShadowBullets.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Shadow Bullets]\nMusket Balls fired while in Shadow Form\nget empowered with shadows\n[c/b40000:Requires: Shadow Form]");
+			}
+			if (BetterGunpowder.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Better Gunpowder]\nGuns deal 5% more damage\n[c/b40000:Requires: Ranger's Dexterity]");
+			}
+			if (DimensionalMagazines.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Dimensional Magazines]\nYou have a 15% chance of getting Musket Balls\nback after hitting an enemy with a bullet\n[c/b40000:Requires: Better Gunpowder]");
+			}
+			if (DimensionalBullets.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Dimensional Bullets]\nBullets gotten back from Dimensional Magazines\nhave a 50% chance of being automatically\nfired in a weaker form\n[c/b40000:Requires: Dimensional Magazines]");
+			}
+			if (LuckyShots.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Lucky Shots]\nCritical strikes grant a temporary buff\nthat increases damage by 10%\n[c/b40000:Requires: Better Gunpowder]");
+			}
+			if (GoldenFingers.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Golden Fingers]\nGuns have a 10% chance to inflict Midas\n[c/b40000:Requires: Lucky Shots]");
+			}
+			if (Speedy.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Speedy]\nGuns deal 4% more damage while you are\nrunning fast\n[c/b40000:Requires: Better Gunpowder]");
+			}
+			if (FasterGelCombustion.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Faster Gel Combustion]\nFlamethrowers are 8% faster\n[c/b40000:Requires: Speedy]");
+			}
+			if (Stress.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Stress]\nWhen below 150 health, you deal 10% more damage\n[c/b40000:Requires: Faster Gel Combustion]");
+			}
+			if (BulletStorm.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Bullet Storm]\nWhen below 200 health, Guns are 10% faster\n[c/b40000:Requires: Stress]");
+			}
+			if (BulletHell.IsMouseHovering)
+			{
+				DescriptionText.SetText("[c/ffec00:Bullet Hell]\nWhen below 250 health, Guns have a\n33% chance of inflicting On Fire!\n[c/b40000:Requires: Bullet Storm]");
+			}
 
 			if (untoldplayer.RangerDexterity == false)
-				{
-					RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity1"));
-				}
-				else
-				{
-					RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity2"));
-					BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder1"));
+			{
+				RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity1"));
+			}
+			else
+			{
+				RangersDexterity.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/RangersDexterity2"));
+				BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder1"));
 				if (untoldplayer.BetterGunpowder)
 				{
 					BetterGunpowder.SetImage(ModContent.GetTexture("UntoldLegends/Sprites/Ranged/BetterGunpowder2"));
