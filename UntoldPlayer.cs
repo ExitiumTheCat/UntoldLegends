@@ -431,8 +431,6 @@ namespace UntoldLegends
             {
                 ShadowFormActivated = true;
                 ShadowFormTimer += 300;
-                player.velocity.Y += 20;
-                player.velocity.X -= 20;
             }
             if (ShadowFormTimer > 0)
             {
