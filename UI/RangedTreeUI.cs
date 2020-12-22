@@ -361,7 +361,7 @@ namespace UntoldLegends.UI
 			}
 			if (BetterGunpowder.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Better Gunpowder]\nGuns deal 5% more damage\n[c/b40000:Requires: Ranger's Dexterity]");
+				DescriptionText.SetText("[c/ffec00:High Propellant]\nGuns deal 5% more damage\n[c/b40000:Requires: Ranger's Dexterity]");
 			}
 			if (DimensionalMagazines.IsMouseHovering)
 			{
