@@ -365,7 +365,7 @@ namespace UntoldLegends.UI
 			}
 			if (DimensionalMagazines.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Dimensional Magazines]\nYou have a 15% chance of getting Musket Balls\nback after hitting an enemy with a bullet\n[c/b40000:Requires: Better Gunpowder]");
+				DescriptionText.SetText("[c/ffec00:Dimensional Magazines]\nYou have a 15% chance of getting Musket Balls\nback after hitting an enemy with a bullet\n[c/b40000:Requires: High Propellant]");
 			}
 			if (DimensionalBullets.IsMouseHovering)
 			{
@@ -373,7 +373,7 @@ namespace UntoldLegends.UI
 			}
 			if (LuckyShots.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Lucky Shots]\nCritical strikes grant a temporary buff\nthat increases damage by 10%\n[c/b40000:Requires: Better Gunpowder]");
+				DescriptionText.SetText("[c/ffec00:Lucky Shots]\nCritical strikes grant a temporary buff\nthat increases damage by 10%\n[c/b40000:Requires: High Propellant]");
 			}
 			if (GoldenFingers.IsMouseHovering)
 			{
@@ -381,7 +381,7 @@ namespace UntoldLegends.UI
 			}
 			if (Speedy.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Speedy]\nGuns deal 4% more damage while you are\nrunning fast\n[c/b40000:Requires: Better Gunpowder]");
+				DescriptionText.SetText("[c/ffec00:Speedy]\nGuns deal 4% more damage while you are\nrunning fast\n[c/b40000:Requires: High Propellant]");
 			}
 			if (FasterGelCombustion.IsMouseHovering)
 			{
