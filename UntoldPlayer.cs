@@ -19,7 +19,6 @@ namespace UntoldLegends
         public bool HunterAcrobatics;
         public bool AerialTakeover;
         public int AerialTakeoverBackflipTimer;
-        public int AerialTakeoverBackflipTimerElectricBoogaloo;
         public bool HunterInstincts;
         public bool SharpenedArrows;
         public bool SuperSharpenedArrows;
@@ -262,7 +261,7 @@ namespace UntoldLegends
                     }
                 }
             }
-            if (BulletHell == true && player.HeldItem.useAmmo == AmmoID.Bullet && player.statLife < 250)
+            if (BulletHell == true && player.HeldItem.useAmmo == AmmoID.Bullet && player.statLife < player.statLifeMax2 * 0.50)
             {
                 if (Main.rand.NextFloat() < .33f)
                 {
@@ -357,18 +356,10 @@ namespace UntoldLegends
                 {
                     if (AerialTakeoverBackflipTimer > 74)
                     {
-                        if (AerialTakeoverBackflipTimerElectricBoogaloo == 0)
-                        {
-                            if (player.direction == -1)
-                                player.fullRotation += 1;
-                            else
-                                player.fullRotation -= 1;
-                            AerialTakeoverBackflipTimerElectricBoogaloo++;
-                        }
+                        if (player.direction == -1)
+                            player.fullRotation += MathHelper.PiOver2 / 4;
                         else
-                        {
-                            AerialTakeoverBackflipTimerElectricBoogaloo--;
-                        }
+                            player.fullRotation -= MathHelper.PiOver2 / 4;
                     }
                     else
                     {
@@ -422,7 +413,7 @@ namespace UntoldLegends
                 }
             }
 
-            if (Stress == true && player.statLife < 150)
+            if (Stress == true && player.statLife < player.statLifeMax2*0.30)
             {
                 player.allDamage += 0.10f;
             }
@@ -454,7 +445,7 @@ namespace UntoldLegends
                     ShadowFormActivated = false;
                 }
             }
-            if (Stress && player.statLife < 150)
+            if (Stress && player.statLife < player.statLifeMax2 * 0.40)
             {
                 player.allDamage += 0.10f;
             }

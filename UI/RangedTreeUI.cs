@@ -389,15 +389,15 @@ namespace UntoldLegends.UI
 			}
 			if (Stress.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Stress]\nWhen below 150 health, you deal 10% more damage\n[c/b40000:Requires: Faster Gel Combustion]");
+				DescriptionText.SetText("[c/ffec00:Stress]\nWhen below 30% health, you deal 10% more damage\n[c/b40000:Requires: Faster Gel Combustion]");
 			}
 			if (BulletStorm.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Bullet Storm]\nWhen below 200 health, Guns are 10% faster\n[c/b40000:Requires: Stress]");
+				DescriptionText.SetText("[c/ffec00:Bullet Storm]\nWhen below 40% health, Guns are 10% faster\n[c/b40000:Requires: Stress]");
 			}
 			if (BulletHell.IsMouseHovering)
 			{
-				DescriptionText.SetText("[c/ffec00:Bullet Hell]\nWhen below 250 health, Guns have a\n33% chance of inflicting On Fire!\n[c/b40000:Requires: Bullet Storm]");
+				DescriptionText.SetText("[c/ffec00:Bullet Hell]\nWhen below 50% health, Guns have a\n33% chance of inflicting On Fire!\n[c/b40000:Requires: Bullet Storm]");
 			}
 
 			if (untoldplayer.RangerDexterity == false)
